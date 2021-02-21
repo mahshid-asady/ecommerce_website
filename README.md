@@ -1,5 +1,5 @@
 # ecommerce_website
-A simple Ecommerce_Websit 
+A simple Ecommerce_Website 
 
 Requirements
 
