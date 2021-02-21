@@ -1,0 +1,14 @@
+{% load static %}
+
+<div class="sidebar-widget">
+    <div class="main-heading">
+        <h3 class="sidebar-title">Category</h3>
+    </div>
+    <div class="sidebar-widget-category">
+        <ul>
+            {% for category in categories %}
+            <li><a href="/products/{{ category.name }}" class="selected">{{ category.title }} <span>(4)</span> </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
