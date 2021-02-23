@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('eshop_about_us.urls')),
     path('', include('eshop_contact.urls')),
     path('footer/', footer_partial, name='footer'),
+    path('', include('eshop_order.urls')),
 
 
 

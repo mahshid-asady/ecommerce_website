@@ -20,6 +20,8 @@ def home(request):
     discount_products= Product.objects.filter(discount=True).all()[:2]
 
 
+
+
     context = {
         'slides': slides,
         'latest_products': latest_products,
@@ -28,6 +30,7 @@ def home(request):
         'sample_product_category2':sample_product_category2,
         'most_visit_products':most_visit_products,
         'discount_products':discount_products,
+
 
 
     }

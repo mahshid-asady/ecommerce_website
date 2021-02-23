@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'site_settings',
     'eshop_about_us',
     'eshop_contact',
+    'eshop_order',
 
 
 

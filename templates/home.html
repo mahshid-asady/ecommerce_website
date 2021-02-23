@@ -101,21 +101,15 @@
             <div class="row">
                 <div class="col-md-12 text-center" data-aos="fade-up">
                     <div class="section-title mb-0">
-                        <h2 class="title">Our Products</h2>
-                        <p class="sub-title mb-6">Torem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmo tempor incididunt ut labore</p>
+                        <h2 class="title">محصولات</h2>
                     </div>
                 </div>
 
                 <!-- Tab Start -->
                 <div class="col-md-12 text-center mb-8" data-aos="fade-up" data-aos-delay="200">
                     <ul class="product-tab-nav nav justify-content-center">
-                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-product-new-arrivals">New Arrivals</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-best-sellers">Best
-                                Sellers </a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-sale-item">Sale
-                                Items</a></li>
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-on-sales">On
-                                Sales</a></li>
+                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab-product-new-arrivals">جدید ترین محصولات</a></li>
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab-product-best-sellers">پرفروش ترین محضولات</a></li>
                     </ul>
                 </div>
                 <!-- Tab End -->
@@ -137,7 +131,7 @@
                                             </a>
                                             <span class="badges">
                                                 <span class="sale">-10%</span>
-                                            <span class="new">New</span>
+                                            <span class="new">جدید</span>
                                             </span>
                                             <div class="actions">
                                                 <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
@@ -147,14 +141,13 @@
                                                 <a href="compare.html" class="action compare" title="Compare"><i
                                                         class="icon-refresh"></i></a>
                                             </div>
-                                            <button title="Add To Cart" class=" add-to-cart">Add
-                                                To Cart</button>
+                                            <button title="Add To Cart" class=" add-to-cart">افزودن به سبد خرید</button>
                                         </div>
                                         <div class="content">
-                                            <h5 class="title"><a href="shop-left-sidebar.html">Wooden decorations</a></h5>
+                                            <h5 class="title"><a href="shop-left-sidebar.html">{{ product.title }}</a></h5>
                                             <span class="price">
-                                                <span class="new">$38.50</span>
-                                            <span class="old">$48.50</span>
+                                                <span class="new">{{ product.price }} تومان </span>
+                                            <span class="old">{{ product.price }} نومان </span>
                                             </span>
                                         </div>
                                     </div>
@@ -1002,9 +995,9 @@
                         <div class="info justify-content-end">
                             <div class="content align-self-center">
                                 <h3 class="title">
-                                    Sale Furniture <br /> For Summer
+                                    {{ product.title }} <br />  تخفیف های تابستانی
                                 </h3>
-                                <p>Great Discounts Here</p>
+                                <p>تخفیف ویژه</p>
                             </div>
                         </div>
                     </a>

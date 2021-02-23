@@ -41,10 +41,12 @@ class ProductsManager(models.Manager):
         return self.get_queryset().filter(active=True)
 
     def get_by_id(self, product_id):
-        qs = self.get_queryset().filter(id =product_id)
+        qs = self.get_queryset().filter(id=product_id)
         if qs.count() == 1:
             return qs.first()
         return None
+
+
 
 
 
@@ -58,7 +60,8 @@ class Product(models.Model):
     categories = models.ManyToManyField(ProductCategory, blank=True, verbose_name="دسته بندی ها")
     brand = models.CharField(max_length=32, verbose_name='برند')
     product_code = models.IntegerField(verbose_name='کد محصول', null=True)
-    discount= models.BooleanField(default=False)
+    discount = models.BooleanField(default=False)
+    discount_amount = models.IntegerField(max_length=32, null=True)
 
     objects = ProductsManager()
 
@@ -66,9 +69,11 @@ class Product(models.Model):
         verbose_name = 'محصول'
         verbose_name_plural = 'محصولات'
 
-
     def get_absolute_url(self):
         return f"/products/{self.id}/{self.title.replace(' ', '-')}"
+
+
+
 
 
 class ProductGallery(models.Model):
@@ -87,5 +92,3 @@ class ProductGallery(models.Model):
 class MainTopSlider(models.Model):
     title = models.CharField(max_length=23)
     image = models.ImageField(upload_to=upload_gallery_image_path, verbose_name='تصویر')
-
-
