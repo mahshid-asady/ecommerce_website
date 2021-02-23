@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from eshop_products.models import MainTopSlider, Product,ProductCategory
-from site_settings.models import MainLogo
+from site_settings.models import MainLogo,SocialLinks
 
 
 def my_grouper(n, iterable):
@@ -43,3 +43,28 @@ def header(request):
     return render(request, 'shared/Header.html', context)
 
 
+def privacy(request):
+    return render(request, 'privacy_policy.html')
+
+
+def faq(request):
+    return render(request, 'faq.html')
+
+
+def coming_soon(request):
+    return render(request, 'coming_soon.html')
+
+
+def footer_partial(request):
+
+    social= SocialLinks.objects.first()
+
+    context= {
+
+        'social': social,
+
+
+
+
+    }
+    return render(request, 'shared/Footer.html', context)

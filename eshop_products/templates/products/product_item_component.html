@@ -8,9 +8,11 @@
                     <img src="{{ product.image.url }}" alt="Product" />
                     <img class="hover-image" src="{{ product.image.url }}" alt="Product" />
                 </a>
+                {% if product.visit_count == 0 %}
                 <span class="badges">
                     <span class="new">New</span>
                 </span>
+                {% endif %}
                 <div class="actions">
                     <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
                             class="icon-heart"></i></a>
@@ -18,13 +20,12 @@
                     <a href="compare.html" class="action compare" title="Compare"><i
                             class="icon-refresh"></i></a>
                 </div>
-                <button title="Add To Cart" class=" add-to-cart">Add
-                    To Cart</button>
+                <button title="Add To Cart" class=" add-to-cart">افزودن به سبد خرید</button>
             </div>
             <div class="content">
-                <h5 class="title"><a href="shop-left-sidebar.html">Simple minimal Chair</a></h5>
+                <h5 class="title"><a href="shop-left-sidebar.html">{{ product.title }}</a></h5>
                 <span class="price">
-                    <span class="new">$38.50</span>
+                    <span class="new">{{ product.price }} تومان </span>
                 </span>
             </div>
         </div>

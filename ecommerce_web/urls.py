@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from . import settings
-from .views import home, header
+from .views import home, header, footer_partial
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('eshop_account.urls')),
     path('', include('eshop_about_us.urls')),
     path('', include('eshop_contact.urls')),
+    path('footer/', footer_partial, name='footer'),
 
 
 
