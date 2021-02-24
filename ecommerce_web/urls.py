@@ -17,6 +17,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from eshop_products.views import SearchProductsView
 from . import settings
 from .views import home, header, footer_partial
 
@@ -31,7 +32,6 @@ urlpatterns = [
     path('', include('eshop_contact.urls')),
     path('footer/', footer_partial, name='footer'),
     path('', include('eshop_order.urls')),
-
 
 
 ]

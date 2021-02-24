@@ -4,6 +4,7 @@ from eshop_products.views import ProductsList, SearchProductsView, product_detai
 
 urlpatterns= [
     path('products/', ProductsList.as_view(), name='products'),
-    path('search/', SearchProductsView.as_view(), name= 'search'),
     path('products/<productId>/<name>', product_detail),
+    path('search/', SearchProductsView.as_view(), name='search'),
+
 ]
