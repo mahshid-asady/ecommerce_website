@@ -3,10 +3,11 @@
 <div class="col align-self-center">
 <div class="header-actions">
     <div class="header_account_list">
+
         <a href="javascript:void(0)" class="header-action-btn search-btn"><i
                 class="icon-magnifier"></i></a>
         <div class="dropdown_search">
-            <form class="action-form" action="{% url 'search' %}">
+            <form class="action-form" style="display: block" action="{% url 'search' %}">
                 <input class="form-control" placeholder="Enter your search key" type="text" value="{{ request.GET.q }}" name="q"">
                 <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
             </form>
