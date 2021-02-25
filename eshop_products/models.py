@@ -61,7 +61,7 @@ class Product(models.Model):
     brand = models.CharField(max_length=32, verbose_name='برند')
     product_code = models.IntegerField(verbose_name='کد محصول', null=True)
     discount = models.BooleanField(default=False)
-    discount_amount = models.IntegerField(max_length=32, null=True)
+    discount_amount = models.IntegerField(max_length=32, null=True, blank=True)
 
     objects = ProductsManager()
 
@@ -92,3 +92,6 @@ class ProductGallery(models.Model):
 class MainTopSlider(models.Model):
     title = models.CharField(max_length=23)
     image = models.ImageField(upload_to=upload_gallery_image_path, verbose_name='تصویر')
+
+class RecommendedProducts(models.Model):
+    pass

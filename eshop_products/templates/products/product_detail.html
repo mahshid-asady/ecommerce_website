@@ -43,7 +43,7 @@
 
                             {% for pro in pictures %}
                                 <div class="swiper-slide zoom-image-hover">
-                                    <img class="img-responsive m-auto" src="{{ pro.image.url }}" alt="">
+                                    <img class="img-responsive m-auto" style="width: 800px; height: 800px" src="{{ pro.image.url }}" alt="">
                                 </div>
                             {% endfor %}
 
@@ -53,7 +53,7 @@
                         <div class="swiper-wrapper">
                             {% for pro in pictures %}
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" src="{{ pro.image.url }}" alt="">
+                                    <img class="img-responsive m-auto" style="width: 70px" height="70px" src="{{ pro.image.url }}" alt="">
                                 </div>
                             {% endfor %}
 
