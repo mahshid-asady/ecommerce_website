@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'eshop_about_us',
     'eshop_contact',
     'eshop_order',
+    'custom_user'
 
 
 
@@ -143,3 +144,4 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
+AUTH_USER_MODEL = 'custom_user.MyUser'
