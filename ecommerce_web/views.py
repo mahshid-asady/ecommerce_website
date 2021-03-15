@@ -71,3 +71,5 @@ def footer_partial(request):
 
     }
     return render(request, 'shared/Footer.html', context)
+
+

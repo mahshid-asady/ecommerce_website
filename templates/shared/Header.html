@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
  <!-- Header Area start  -->
     <div class="header section">
         <!-- Header Top Message Start -->
@@ -50,6 +51,8 @@
         <div class="header-bottom d-none d-lg-block">
             <div class="container position-relative">
                 <div class="row align-self-center">
+                    <a href="{% provider_login_url 'github' %}">Login with GitHub</a>
+                    <a href="{% provider_login_url 'google' %}">Login with Google</a>
                     <!-- Header Logo Start -->
                     <div class="col-auto align-self-center">
                         <div class="header-logo">
