@@ -44,10 +44,8 @@
                                 <div class="login-form-container">
                                     <div class="login-register-form">
                                         <form action="#" method="post">
-                                            <input type="text" name="user-name"/>
-                                            <input type="password" name="user-password"/>
-                                            <input type="email" name="user-email"/>
-                                            <input type="email" name="user-email"/>
+                                             {% csrf_token %}
+                                             {{ register_form }}
                                             <div class="button-box">
                                                 <div class="login-toggle-btn">
                                                     <input type="checkbox" />

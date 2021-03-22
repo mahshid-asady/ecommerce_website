@@ -95,6 +95,13 @@
                     <div class="col-md-12 align-self-center">
                         <div class="main-menu manu-color-white">
                             <ul>
+                                {% if not user.is_authenticated %}
+                                <li><a href="{% url 'login' %}">ورود</a></li>
+                                <li><a href="{% url 'register' %}">ثبت نام</a></li>
+                                {% else %}
+                                <li><a href="{% url 'logout' %}">خروج</a></li>
+                                {% endif %}
+
                                 <li class="dropdown"><a href="{% url 'home' %}">صفحه اصلی</a>
 
                                 </li>

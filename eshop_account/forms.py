@@ -4,7 +4,7 @@ from django.core import validators
 
 
 class LoginForm(forms.Form):
-    user_name = forms.EmailField(
+    email = forms.EmailField(
         widget=forms.EmailInput(attrs={'placeholder': 'لطفا نام کاربری خود را وارد نمایید'}),
         label='نام کاربری'
     )
@@ -15,11 +15,11 @@ class LoginForm(forms.Form):
     )
 
     def clean_user_name(self):
-        userName = self.cleaned_data.get('user_name')
-        is_exists = User.objects.filter(username=userName)
+        email = self.cleaned_data.get('email')
+        is_exists = User.objects.filter(email=email)
         if not is_exists:
             raise ('not valis')
-        return userName
+        return email
 
 
 class RegisterForm(forms.Form):
