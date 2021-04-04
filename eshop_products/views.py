@@ -26,9 +26,9 @@ class ProductsListByCategory(ListView):
     template_name = 'products/products_list.html'
     paginate_by = 2
 
-    def get_queryset(self):
+    def get_queryset(self,category_slug=None):
         category_name = self.kwargs['category_name']
-        category = ProductCategory.objects.filter(name__iexact=category_name)
+        category = ProductCategory.objects.filter(name__iexact=category_name, slug=category_slug)
         if category is None:
             raise Http404('صفحه ی مورد نظر یافت نشد')
         return Product.objects.get_products_by_category(category_name)
@@ -49,7 +49,7 @@ class SearchProductsView(ListView):
 def product_detail(request, *args, **kwargs):
     selected_product_id = kwargs['productId']
     product = Product.objects.get_by_id(selected_product_id)
-    if product is None or not product.active:
+    if product is None or not product.available:
         raise ("not valid")
 
     related_product_pictures = ProductGallery.objects.filter(product_id=selected_product_id)

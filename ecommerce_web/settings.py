@@ -46,13 +46,16 @@ INSTALLED_APPS = [
     'eshop_about_us',
     'eshop_contact',
     'eshop_order',
+    'eshop_cart',
+    'eshop_payment',
     'custom_user',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.github'
+    'allauth.socialaccount.providers.github',
+    'rest_framework',
 
 
 
@@ -175,3 +178,17 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 LOGIN_REDIRECT_URL = 'home'
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+
+
+
+CART_SESSION_ID = 'cart'

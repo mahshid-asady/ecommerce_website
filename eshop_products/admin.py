@@ -11,7 +11,7 @@ from .models import Product, ProductGallery, MainTopSlider
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['__str__', 'title', 'price', 'active']
+    pass
 
     class Meta:
         model = Product
