@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views.generic import ListView
 # Create your views here.
+from eshop_cart.forms import CartAddProductForm
 from eshop_products.models import Product, ProductGallery, MainTopSlider
 from eshop_products_category.models import ProductCategory
 
@@ -54,10 +55,13 @@ def product_detail(request, *args, **kwargs):
 
     related_product_pictures = ProductGallery.objects.filter(product_id=selected_product_id)
     pictures = MainTopSlider.objects.all()
+    cart_form= CartAddProductForm()
 
     context = {
         'product': product,
         'related_product_pictures': related_product_pictures,
-        "pictures": pictures
+        "pictures": pictures,
+        'cart_form': cart_form
+
     }
     return render(request, 'products/product_detail.html', context)

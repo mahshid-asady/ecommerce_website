@@ -1,5 +1,8 @@
 {% extends 'shared/_MainLayout.html' %}
 {% load static %}
+{% load bootstrap3 %}
+{% load i18n %}
+
 
 
 
@@ -40,23 +43,16 @@
                     <!-- Swiper -->
                     <div class="swiper-container zoom-top">
                         <div class="swiper-wrapper">
-
-                            {% for pro in pictures %}
                                 <div class="swiper-slide zoom-image-hover">
-                                    <img class="img-responsive m-auto" style="width: 800px; height: 800px" src="{{ pro.image.url }}" alt="">
+                                    <img class="img-responsive m-auto" style="width: 800px; height: 800px" src="{{ product.image.url }}" alt="">
                                 </div>
-                            {% endfor %}
-
                         </div>
                     </div>
                     <div class="swiper-container zoom-thumbs slider-nav-style-1 small-nav mt-3 mb-3">
                         <div class="swiper-wrapper">
-                            {% for pro in pictures %}
                                 <div class="swiper-slide">
-                                    <img class="img-responsive m-auto" style="width: 70px" height="70px" src="{{ pro.image.url }}" alt="">
+                                    <img class="img-responsive m-auto" style="width: 70px" height="70px" src="{{ product.image.url }}" alt="">
                                 </div>
-                            {% endfor %}
-
                         </div>
                         <!-- Add Arrows -->
                         <div class="swiper-buttons">
@@ -90,8 +86,15 @@
                                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                             </div>
                             <div class="pro-details-cart">
-                                <button class="add-cart btn btn-primary btn-hover-primary ml-4" href="#"> Add To
-                                    Cart</button>
+                                <form action="{% url "cart_add" product.id %}" method="post">
+                                    {% cart_product_form %}
+                            {% buttons %}
+                                <button type="submit" class="btn btn-success btn-product">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                                </button>
+                            {% endbuttons %}
+                        </form>
+
                             </div>
                         </div>
                         <div class="pro-details-wish-com">
