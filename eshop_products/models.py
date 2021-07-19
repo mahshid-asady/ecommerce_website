@@ -59,7 +59,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=200, db_index=True, default='example')
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True, verbose_name='تصویر')
     stock = models.PositiveIntegerField(default=None)
-    available = models.BooleanField(default=True)
+    active = models.BooleanField(default=True)
     pub_date = models.DateTimeField(auto_now_add=True, null=True)
     updated = models.DateTimeField(auto_now=True)
     visit_count = models.IntegerField(default=0, verbose_name='تعداد بازدید')
@@ -67,7 +67,8 @@ class Product(models.Model):
     brand = models.CharField(max_length=32, verbose_name='برند')
     product_code = models.IntegerField(verbose_name='کد محصول', null=True)
     discount = models.BooleanField(default=False)
-    discount_amount = models.IntegerField(max_length=32, null=True, blank=True)
+    discount_amount = models.IntegerField(null=True, blank=True)
+    price= models.IntegerField(default=100)
 
     objects = ProductsManager()
 

@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
     'rest_framework',
-    'bootstrap3',
+    'eshop_comment',
+    'bootstrap3'
 
 
 
@@ -193,3 +194,17 @@ CACHES = {
 
 
 CART_SESSION_ID = 'cart'
+
+
+
+COMMENT_ALLOW_ANONYMOUS = True
+COMMENT_FROM_EMAIL = os.environ.get('COMMENT_FROM_EMAIL', 'user@doamin')
+COMMENT_CONTACT_EMAIL = os.environ.get('COMMENT_CONTACT_EMAIL', 'contact@domain')
+COMMENT_SEND_HTML_EMAIL = True
+COMMENT_PER_PAGE = 1
+COMMENT_USE_GRAVATAR = True
+COMMENT_USE_EMAIL_FIRST_PART_AS_USERNAME = True
+
+COMMENT_ALLOW_TRANSLATION = True
+
+COMMENT_ALLOW_SUBSCRIPTION = True

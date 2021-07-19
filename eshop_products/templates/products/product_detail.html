@@ -86,13 +86,14 @@
                                 <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
                             </div>
                             <div class="pro-details-cart">
-                                <form action="{% url "cart_add" product.id %}" method="post">
-                                    {% cart_product_form %}
-                            {% buttons %}
-                                <button type="submit" class="btn btn-success btn-product">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
-                                </button>
-                            {% endbuttons %}
+                                <form action="{% url 'cart_add' product.id %}" method="post">
+                                    {% csrf_token %}
+                                    {{ cart_product_form }}
+                                    {% buttons %}
+                                        <button type="submit" class="btn btn-success btn-product">
+                                            <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                                        </button>
+                                    {% endbuttons %}
                         </form>
 
                             </div>
@@ -147,9 +148,9 @@
         <div class="container">
             <div class="description-review-wrapper">
                 <div class="description-review-topbar nav">
-                    <a data-bs-toggle="tab" href="#des-details1">Description</a>
-                    <a class="active" data-bs-toggle="tab" href="#des-details2">Product Details</a>
-                    <a data-bs-toggle="tab" href="#des-details3">Reviews (2)</a>
+                    <a data-bs-toggle="tab" href="#des-details1">پرسش و پاسخ</a>
+                    <a class="active" data-bs-toggle="tab" href="#des-details2">مشخصات کالا</a>
+                    <a data-bs-toggle="tab" href="#des-details3">دیدگاه کاربران</a>
                 </div>
                 <div class="tab-content description-review-bottom">
                     <div id="des-details2" class="tab-pane active">
@@ -176,6 +177,7 @@
                         <div class="row">
                             <div class="col-lg-7">
                                 <div class="review-wrapper">
+                                    {% for comment in comments %}
                                     <div class="single-review">
                                         <div class="review-img">
                                             <img src="assets/images/review-image/1.png" alt="" />
@@ -184,7 +186,7 @@
                                             <div class="review-top-wrap">
                                                 <div class="review-left">
                                                     <div class="review-name">
-                                                        <h4>White Lewis</h4>
+                                                        <h4>{{ comment.user }}</h4>
                                                     </div>
                                                     <div class="rating-product">
                                                         <i class="ion-android-star"></i>
@@ -194,51 +196,46 @@
                                                         <i class="ion-android-star"></i>
                                                     </div>
                                                 </div>
-                                                <div class="review-left">
-                                                    <a href="#">Reply</a>
+                                                <span class=" text-muted font-weight-normal">
+                                                    {{ comment.posted_on }}
+                                                </span>
+                                                <div class="collapseExample" id="collapseExample{{forloop.counter}}">
+                                                    {% for replay in comment.replies.all %}
+                                                        <p class="info">{{ replay.name }} | {{ replay.posted_on }}</p>
+                                                        <li>{{ replay.content }}</li>
+                                                    {% endfor %}
+
+                                                    <h5>Replay</h5>
+                                                    <form action="." method="post">
+                                                        {{ comment_form.as_p }}
+                                                        {% csrf_token %}
+                                                        <!-- Hidden input for parent comment.id -->
+                                                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                                                        <input class="btn btn-primary" type="submit" value="Replay">
+                                                    </form>
+
                                                 </div>
                                             </div>
                                             <div class="review-bottom">
                                                 <p>
-                                                    Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula. Phasellus quam nisi, congue id nulla.
+                                                    {{ comment.content | linebreaks }}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="single-review child-review">
-                                        <div class="review-img">
-                                            <img src="assets/images/review-image/2.png" alt="" />
-                                        </div>
-                                        <div class="review-content">
-                                            <div class="review-top-wrap">
-                                                <div class="review-left">
-                                                    <div class="review-name">
-                                                        <h4>White Lewis</h4>
-                                                    </div>
-                                                    <div class="rating-product">
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                        <i class="ion-android-star"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-left">
-                                                    <a href="#">Reply</a>
-                                                </div>
-                                            </div>
-                                            <div class="review-bottom">
-                                                <p>Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Sus pen disse viverra ed viverra. Mauris ullarper euismod vehicula.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="ratting-form-wrapper pl-50">
                                     <h3>Add a Review</h3>
                                     <div class="ratting-form">
-                                        <form action="#">
+                                        {% if new_comment %}
+                                        <div class="alert alert-success" role="alert">
+                                            Your comment is awaiting moderation
+                                        </div>
+                                        {% else %}
+                                        <form action="#" method="post">
                                             <div class="star-box">
                                                 <span>Your rating:</span>
                                                 <div class="rating-product">
@@ -249,25 +246,11 @@
                                                     <i class="ion-android-star"></i>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="rating-form-style">
-                                                        <input placeholder="Name" type="text" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="rating-form-style">
-                                                        <input placeholder="Email" type="email" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="rating-form-style form-submit">
-                                                        <textarea name="Your Review" placeholder="Message"></textarea>
-                                                        <button class="btn btn-primary btn-hover-color-primary " type="submit" value="Submit">Submit</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {{ comment_form.as_p }}
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
                                         </form>
+                                         {% endif %}
                                     </div>
                                 </div>
                             </div>
